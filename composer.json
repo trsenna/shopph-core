@@ -1,0 +1,26 @@
+{
+	"name": "trsenna/shopph-core",
+	"description": "Use this project as a reference to quickly start any new core package.",
+	"keywords": [],
+	"license": "MIT",
+	"support": {
+		"issues": "https://github.com/trsenna/shopph-core/issues",
+		"source": "https://github.com/trsenna/shopph-core"
+	},
+	"authors": [
+		{
+			"name": "Thiago Senna",
+			"email": "trsenna@gmail.com"
+		}
+	],
+	"require": {
+		"php": "^7.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"Shopph\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
