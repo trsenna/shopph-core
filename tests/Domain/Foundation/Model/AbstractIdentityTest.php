@@ -17,31 +17,31 @@ final class AbstractIdentityTest extends TestCase
 
     public function testValueWhenValueWithUUID4MustReturnUUID4String(): void
     {
-        $identity = self::factoryIdentity($this->uuid4);
+        $identity = self::factory($this->uuid4);
         $this->assertEquals($this->uuid4, $identity->value());
     }
 
     public function testEqualsToWhenSameInstanceMustReturnTrue(): void
     {
-        $identity = self::factoryIdentity($this->uuid4);
+        $identity = self::factory($this->uuid4);
         $this->assertTrue($identity->equalsTo($identity));
     }
 
     public function testEqualsToWhenSameValueMustReturnTrue(): void
     {
-        $identity = self::factoryIdentity($this->uuid4);
-        $identityOther = self::factoryIdentity($this->uuid4);
+        $identity = self::factory($this->uuid4);
+        $identityOther = self::factory($this->uuid4);
         $this->assertTrue($identity->equalsTo($identityOther));
     }
 
     public function testEqualsToWhenNotSameValueMustReturnFalse(): void
     {
-        $identity = self::factoryIdentity($this->uuid4);
-        $identityOther = self::factoryIdentity($this->uuid4Other);
+        $identity = self::factory($this->uuid4);
+        $identityOther = self::factory($this->uuid4Other);
         $this->assertFalse($identity->equalsTo($identityOther));
     }
 
-    private static function factoryIdentity(string $value): AbstractIdentity
+    public static function factory(string $value): AbstractIdentity
     {
         return new class($value) extends AbstractIdentity
         {

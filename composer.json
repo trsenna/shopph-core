@@ -24,6 +24,11 @@
 			"Shopph\\": "src/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"Shopph\\": "tests/"
+		}
+	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
 }
