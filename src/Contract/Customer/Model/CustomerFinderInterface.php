@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Contract\Customer\Query;
+namespace Shopph\Contract\Customer\Model;
 
 interface CustomerFinderInterface
 {
