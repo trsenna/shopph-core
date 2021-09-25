@@ -12,4 +12,18 @@ final class CustomerNameTest extends TestCase
         $customerName = new CustomerName('Jon');
         $this->assertEquals('Jon', $customerName->getFullName());
     }
+
+    public function testEqualsToWhenSameNameMustReturnTrue(): void
+    {
+        $customerName = new CustomerName('Jon');
+        $customerNameOther = new CustomerName('Jon');
+        $this->assertTrue($customerName->equalsTo($customerNameOther));
+    }
+
+    public function testEqualsToWhenNotSameNameMustReturnFalse(): void
+    {
+        $customerName = new CustomerName('Jon');
+        $customerNameOther = new CustomerName('Alice');
+        $this->assertFalse($customerName->equalsTo($customerNameOther));
+    }
 }
