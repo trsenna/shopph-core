@@ -26,8 +26,11 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Shopph\\": "tests/"
-		}
+			"Shopph\\Tests\\": "tests/"
+		},
+		"files": [
+			"tests/functions-helpers.php"
+		]
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true

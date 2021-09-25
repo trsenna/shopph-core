@@ -1,9 +1,12 @@
 <?php
 
-namespace Shopph\Domain\Foundation\Model;
+namespace Shopph\Tests\Domain\Foundation\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Foundation\Model\IdentityInterface;
+
+use function Shopph\Tests\factory_entity;
+use function Shopph\Tests\factory_identity;
 
 final class AbstractEntityTest extends TestCase
 {
@@ -11,23 +14,12 @@ final class AbstractEntityTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->identity = AbstractIdentityTest::factory('87ffd646-9ef8-473b-951c-28f53fe8cadc');
+        $this->identity = factory_identity('87ffd646-9ef8-473b-951c-28f53fe8cadc');
     }
 
     public function testGetIdentityWhenHasIdentityMustReturnIdentity()
     {
-        $entity = self::factory($this->identity);
+        $entity = factory_entity($this->identity);
         $this->assertSame($this->identity, $entity->getIdentity());
-    }
-
-    private static function factory(IdentityInterface $identity): AbstractEntity
-    {
-        return new class($identity) extends AbstractEntity
-        {
-            public function __construct(IdentityInterface $identity)
-            {
-                parent::__construct($identity);
-            }
-        };
     }
 }

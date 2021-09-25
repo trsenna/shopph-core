@@ -1,8 +1,10 @@
 <?php
 
-namespace Shopph\Domain\Foundation\Model;
+namespace Shopph\Tests\Domain\Foundation\Model;
 
 use PHPUnit\Framework\TestCase;
+
+use function Shopph\Tests\factory_identity;
 
 final class AbstractIdentityTest extends TestCase
 {
@@ -17,38 +19,27 @@ final class AbstractIdentityTest extends TestCase
 
     public function testValueWhenValueWithUUID4MustReturnUUID4String(): void
     {
-        $identity = self::factory($this->uuid4);
+        $identity = factory_identity($this->uuid4);
         $this->assertEquals($this->uuid4, $identity->value());
     }
 
     public function testEqualsToWhenSameInstanceMustReturnTrue(): void
     {
-        $identity = self::factory($this->uuid4);
+        $identity = factory_identity($this->uuid4);
         $this->assertTrue($identity->equalsTo($identity));
     }
 
     public function testEqualsToWhenSameValueMustReturnTrue(): void
     {
-        $identity = self::factory($this->uuid4);
-        $identityOther = self::factory($this->uuid4);
+        $identity = factory_identity($this->uuid4);
+        $identityOther = factory_identity($this->uuid4);
         $this->assertTrue($identity->equalsTo($identityOther));
     }
 
     public function testEqualsToWhenNotSameValueMustReturnFalse(): void
     {
-        $identity = self::factory($this->uuid4);
-        $identityOther = self::factory($this->uuid4Other);
+        $identity = factory_identity($this->uuid4);
+        $identityOther = factory_identity($this->uuid4Other);
         $this->assertFalse($identity->equalsTo($identityOther));
-    }
-
-    public static function factory(string $value): AbstractIdentity
-    {
-        return new class($value) extends AbstractIdentity
-        {
-            public function __construct(string $value)
-            {
-                parent::__construct($value);
-            }
-        };
     }
 }
