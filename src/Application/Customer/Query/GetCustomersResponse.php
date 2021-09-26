@@ -8,7 +8,7 @@ final class GetCustomersResponse
 
     public static function fromArray(array $customers): GetCustomersResponse
     {
-        $response = new self();
+        $response = new static();
         $response->customers = $customers;
 
         return $response;

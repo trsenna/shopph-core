@@ -11,7 +11,7 @@ final class StoreCustomerResponse
 
     public static function fromEntity(Customer $customer): StoreCustomerResponse
     {
-        $response = new self();
+        $response = new static();
         $response->id = $customer->getIdentity()->value();
         $response->name = $customer->getName()->getFullName();
 

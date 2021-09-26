@@ -12,7 +12,7 @@ final class StoredCustomer implements EventInterface
 
     public static function fromEntity(Customer $customer): StoredCustomer
     {
-        $event = new self();
+        $event = new static();
         $event->id = $customer->getIdentity()->value();
         $event->name = $customer->getName()->getFullName();
 

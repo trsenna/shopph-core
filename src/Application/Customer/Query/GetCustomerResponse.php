@@ -8,7 +8,7 @@ final class GetCustomerResponse
 
     public static function fromObject(\stdClass $customer): GetCustomerResponse
     {
-        $response = new self();
+        $response = new static();
         $response->customer = $customer;
 
         return $response;
