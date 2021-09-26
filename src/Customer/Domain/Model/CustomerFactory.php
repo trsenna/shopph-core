@@ -2,7 +2,7 @@
 
 namespace Shopph\Customer\Domain\Model;
 
-use Shopph\Contract\Customer\Model\CustomerFactoryInterface;
+use Shopph\Customer\Contract\Model\CustomerFactoryInterface;
 use Shopph\Foundation\Contract\Model\IdentityFactoryInterface;
 
 final class CustomerFactory implements CustomerFactoryInterface

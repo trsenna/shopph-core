@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Tests\Domain\Customer\Model;
+namespace Shopph\Tests\Customer\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Domain\Customer\Model\CustomerName;
+use Shopph\Customer\Domain\Model\CustomerName;
 
 final class CustomerNameTest extends TestCase
 {

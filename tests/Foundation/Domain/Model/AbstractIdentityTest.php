@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Tests\Domain\Foundation\Model;
+namespace Shopph\Tests\Foundation\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
 

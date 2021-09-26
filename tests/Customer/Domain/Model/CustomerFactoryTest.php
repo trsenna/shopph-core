@@ -1,11 +1,11 @@
 <?php
 
-namespace Shopph\Tests\Domain\Customer\Model;
+namespace Shopph\Tests\Customer\Domain\Model;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Foundation\Model\IdentityFactoryInterface;
-use Shopph\Domain\Customer\Model\CustomerFactory;
+use Shopph\Customer\Domain\Model\CustomerFactory;
+use Shopph\Foundation\Contract\Model\IdentityFactoryInterface;
 
 use function Shopph\Tests\factory_identity;
 
