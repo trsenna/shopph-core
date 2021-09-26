@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Application\Customer\Query;
+namespace Shopph\Customer\Application\Query;
 
-use Shopph\Contract\Customer\Model\CustomerFinderInterface;
-use Shopph\Contract\Customer\Query\GetCustomersHandlerInterface;
+use Shopph\Customer\Contract\Model\CustomerFinderInterface;
+use Shopph\Customer\Contract\Query\GetCustomersHandlerInterface;
 
 final class GetCustomersHandler implements GetCustomersHandlerInterface
 {

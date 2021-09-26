@@ -1,8 +1,8 @@
 <?php
 
-namespace Shopph\Contract\Customer\Command;
+namespace Shopph\Customer\Contract\Command;
 
-use Shopph\Application\Customer\Command\StoreCustomer;
+use Shopph\Customer\Application\Command\StoreCustomer;
 
 interface StoreCustomerHandlerInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Application\Customer\Command;
+namespace Shopph\Customer\Application\Command;
 
 final class StoreCustomer
 {

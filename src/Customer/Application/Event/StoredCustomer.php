@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Application\Customer\Event;
+namespace Shopph\Customer\Application\Event;
 
-use Shopph\Contract\Foundation\Event\EventInterface;
-use Shopph\Domain\Customer\Model\Customer;
+use Shopph\Customer\Domain\Model\Customer;
+use Shopph\Foundation\Contract\Event\EventInterface;
 
 final class StoredCustomer implements EventInterface
 {

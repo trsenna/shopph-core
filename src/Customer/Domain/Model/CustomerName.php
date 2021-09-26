@@ -1,8 +1,8 @@
 <?php
 
-namespace Shopph\Domain\Customer\Model;
+namespace Shopph\Customer\Domain\Model;
 
-use Shopph\Contract\Foundation\Model\ValueObjectInterface;
+use Shopph\Foundation\Contract\Model\ValueObjectInterface;
 
 class CustomerName implements ValueObjectInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Domain\Customer\Model;
+namespace Shopph\Customer\Domain\Model;
 
 use Shopph\Contract\Customer\Model\CustomerFactoryInterface;
-use Shopph\Contract\Foundation\Model\IdentityFactoryInterface;
+use Shopph\Foundation\Contract\Model\IdentityFactoryInterface;
 
 final class CustomerFactory implements CustomerFactoryInterface
 {

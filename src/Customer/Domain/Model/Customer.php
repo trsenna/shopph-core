@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Domain\Customer\Model;
+namespace Shopph\Customer\Domain\Model;
 
-use Shopph\Contract\Foundation\Model\IdentityInterface;
-use Shopph\Domain\Foundation\Model\AbstractEntity;
+use Shopph\Foundation\Contract\Model\IdentityInterface;
+use Shopph\Foundation\Domain\Model\AbstractEntity;
 
 class Customer extends AbstractEntity
 {

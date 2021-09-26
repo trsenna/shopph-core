@@ -1,8 +1,8 @@
 <?php
 
-namespace Shopph\Contract\Customer\Model;
+namespace Shopph\Customer\Contract\Model;
 
-use Shopph\Domain\Customer\Model\Customer;
+use Shopph\Customer\Domain\Model\Customer;
 
 interface CustomerFactoryInterface
 {

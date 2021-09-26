@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Application\Customer\Query;
+namespace Shopph\Customer\Application\Query;
 
 final class GetCustomerResponse
 {
