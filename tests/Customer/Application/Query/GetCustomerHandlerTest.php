@@ -52,5 +52,6 @@ final class GetCustomerHandlerTest extends TestCase
         $this->assertNotNull($response);
         $this->assertNotNull($response->customer);
         $this->assertInstanceOf(GetCustomerResponse::class, $response);
+        $this->assertSame($this->customer, $response->customer);
     }
 }
