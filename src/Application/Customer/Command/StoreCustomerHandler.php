@@ -24,7 +24,7 @@ final class StoreCustomerHandler implements StoreCustomerHandlerInterface
         $this->dispatcher = $dispatcher;
     }
 
-    public function execute(StoreCustomer $command): StoreCustomerResponse
+    public function execute(StoreCustomer $command): void
     {
         $customer = $this->customerFactory->create($command->name);
         $this->customerRepository->add($customer);
@@ -32,7 +32,5 @@ final class StoreCustomerHandler implements StoreCustomerHandlerInterface
         $this->dispatcher->dispatch(
             StoredCustomer::fromEntity($customer)
         );
-
-        return StoreCustomerResponse::fromEntity($customer);
     }
 }
