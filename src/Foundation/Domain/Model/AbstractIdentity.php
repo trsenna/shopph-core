@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Domain\Foundation\Model;
+namespace Shopph\Foundation\Domain\Model;
 
 use Shopph\Contract\Foundation\Model\IdentityInterface;
 
