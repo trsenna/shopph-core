@@ -27,8 +27,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Shopph\\Tests\\": "tests/Component/",
-			"Shopph\\Tests\\Contract\\": "tests/Contract/"
+			"Shopph\\Tests\\": "tests/Component/"
 		},
 		"files": [
 			"tests/functions-helpers.php"
