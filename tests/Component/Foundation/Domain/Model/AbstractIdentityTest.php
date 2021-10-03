@@ -43,7 +43,7 @@ final class AbstractIdentityTest extends TestCase
         $this->assertFalse($identity->equalsTo($identityOther));
     }
 
-    public function testCreateWhenBlankMustThrowException(): void
+    public function testCreateWhenValueIsBlankMustThrowException(): void
     {
         try {
             factory_identity(' ');

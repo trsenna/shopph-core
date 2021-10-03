@@ -25,4 +25,15 @@ final class CustomerTest extends TestCase
         $customer = new Customer($this->identity, $this->customerName);
         $this->assertSame($this->customerName, $customer->getName());
     }
+
+    public function testCreateWhenNameIsBlankMustThrowException(): void
+    {
+        try {
+            new CustomerName(' ');
+            $this->fail();
+        } catch (\InvalidArgumentException $e) {
+            $this->assertStringContainsString('name', $e->getMessage());
+            $this->assertStringContainsString('not blank', $e->getMessage());
+        }
+    }
 }
