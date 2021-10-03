@@ -3,16 +3,17 @@
 namespace Shopph\Foundation\Domain\Model;
 
 use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
-
-use function Shopph\verify;
+use Shopph\Shared\Verification\VerifyTrait;
 
 abstract class AbstractIdentity implements IdentityInterface
 {
+    use VerifyTrait;
+
     protected string $value;
 
     protected function __construct(string $value)
     {
-        verify('value not blank', strlen(trim($value)) !== 0);
+        static::verify('value not blank', strlen(trim($value)) !== 0);
 
         $this->value = $value;
     }

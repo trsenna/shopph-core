@@ -22,7 +22,8 @@
 	"autoload": {
 		"psr-4": {
 			"Shopph\\": "src/Component/",
-			"Shopph\\Contract\\": "src/Contract/"
+			"Shopph\\Contract\\": "src/Contract/",
+			"Shopph\\Shared\\": "src/Shared/"
 		},
 		"files": [
 			"src/functions-helpers.php"

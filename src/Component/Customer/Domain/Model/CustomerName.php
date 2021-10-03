@@ -3,16 +3,19 @@
 namespace Shopph\Customer\Domain\Model;
 
 use Shopph\Contract\Foundation\Domain\Model\ValueObjectInterface;
+use Shopph\Shared\Verification\VerifyTrait;
 
 use function Shopph\verify;
 
 class CustomerName implements ValueObjectInterface
 {
+    use VerifyTrait;
+
     private string $name;
 
     public function __construct(string $name)
     {
-        verify('name not blank', strlen(trim($name)) !== 0);
+        static::verify('name not blank', strlen(trim($name)) !== 0);
 
         $this->name = $name;
     }

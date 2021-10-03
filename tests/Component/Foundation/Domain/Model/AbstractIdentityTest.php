@@ -3,6 +3,7 @@
 namespace Shopph\Tests\Foundation\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
+use Shopph\Shared\Verification\VerifyException;
 
 use function Shopph\Tests\factory_identity;
 
@@ -48,7 +49,7 @@ final class AbstractIdentityTest extends TestCase
         try {
             factory_identity(' ');
             $this->fail();
-        } catch (\InvalidArgumentException $e) {
+        } catch (VerifyException $e) {
             $this->assertStringContainsString('value', $e->getMessage());
             $this->assertStringContainsString('not blank', $e->getMessage());
         }

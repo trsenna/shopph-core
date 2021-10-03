@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
+use Shopph\Shared\Verification\VerifyException;
 
 use function Shopph\Tests\factory_identity;
 
@@ -31,7 +32,7 @@ final class CustomerTest extends TestCase
         try {
             new CustomerName(' ');
             $this->fail();
-        } catch (\InvalidArgumentException $e) {
+        } catch (VerifyException $e) {
             $this->assertStringContainsString('name', $e->getMessage());
             $this->assertStringContainsString('not blank', $e->getMessage());
         }
