@@ -2,8 +2,8 @@
 
 namespace Shopph\Customer\Application\Query;
 
-use Shopph\Customer\Contract\Model\CustomerFinderInterface;
-use Shopph\Customer\Contract\Query\GetCustomerHandlerInterface;
+use Shopph\Contract\Customer\Application\Query\GetCustomerHandlerInterface;
+use Shopph\Contract\Customer\Domain\Model\CustomerFinderInterface;
 
 final class GetCustomerHandler implements GetCustomerHandlerInterface
 {

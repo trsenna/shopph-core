@@ -2,7 +2,7 @@
 
 namespace Shopph\Foundation\Domain\Model;
 
-use Shopph\Foundation\Contract\Model\IdentityInterface;
+use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
 
 abstract class AbstractIdentity implements IdentityInterface
 {

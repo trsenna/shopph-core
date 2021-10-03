@@ -3,9 +3,9 @@
 namespace Shopph\Tests\Customer\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
+use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
-use Shopph\Foundation\Contract\Model\IdentityInterface;
 
 use function Shopph\Tests\factory_identity;
 

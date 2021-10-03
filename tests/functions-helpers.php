@@ -2,7 +2,7 @@
 
 namespace Shopph\Tests;
 
-use Shopph\Foundation\Contract\Model\IdentityInterface;
+use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
 use Shopph\Foundation\Domain\Model\AbstractEntity;
 use Shopph\Foundation\Domain\Model\AbstractIdentity;
 

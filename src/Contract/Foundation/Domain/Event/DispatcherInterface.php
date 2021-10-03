@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Foundation\Contract\Event;
+namespace Shopph\Contract\Foundation\Domain\Event;
 
 interface DispatcherInterface
 {

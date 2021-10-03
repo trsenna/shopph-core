@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Foundation\Contract\Model;
+namespace Shopph\Contract\Foundation\Domain\Model;
 
 interface ValueObjectInterface
 {

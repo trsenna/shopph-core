@@ -2,7 +2,7 @@
 
 namespace Shopph\Customer\Domain\Model;
 
-use Shopph\Foundation\Contract\Model\IdentityInterface;
+use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
 use Shopph\Foundation\Domain\Model\AbstractEntity;
 
 class Customer extends AbstractEntity

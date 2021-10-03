@@ -2,7 +2,7 @@
 
 namespace Shopph\Customer\Domain\Model;
 
-use Shopph\Foundation\Contract\Model\ValueObjectInterface;
+use Shopph\Contract\Foundation\Domain\Model\ValueObjectInterface;
 
 class CustomerName implements ValueObjectInterface
 {

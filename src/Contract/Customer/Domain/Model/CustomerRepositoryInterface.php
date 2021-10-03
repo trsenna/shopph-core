@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Customer\Contract\Model;
+namespace Shopph\Contract\Customer\Domain\Model;
 
+use Shopph\Contract\Foundation\Domain\Model\RepositoryInterface;
 use Shopph\Customer\Domain\Model\Customer;
-use Shopph\Foundation\Contract\Model\RepositoryInterface;
 
 interface CustomerRepositoryInterface extends RepositoryInterface
 {

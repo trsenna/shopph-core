@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Customer\Contract\Command;
+namespace Shopph\Contract\Customer\Application\Command;
 
 use Shopph\Customer\Application\Command\StoreCustomer;
 

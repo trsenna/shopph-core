@@ -4,13 +4,13 @@ namespace Shopph\Tests\Customer\Application\Command;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Shopph\Contract\Customer\Domain\Model\CustomerFactoryInterface;
+use Shopph\Contract\Customer\Domain\Model\CustomerRepositoryInterface;
+use Shopph\Contract\Foundation\Domain\Event\DispatcherInterface;
 use Shopph\Customer\Application\Command\StoreCustomer;
 use Shopph\Customer\Application\Command\StoreCustomerHandler;
-use Shopph\Customer\Contract\Model\CustomerFactoryInterface;
-use Shopph\Customer\Contract\Model\CustomerRepositoryInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
-use Shopph\Foundation\Contract\Event\DispatcherInterface;
 
 use function Shopph\Tests\factory_identity;
 

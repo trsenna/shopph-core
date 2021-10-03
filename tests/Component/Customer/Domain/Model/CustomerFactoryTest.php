@@ -4,8 +4,8 @@ namespace Shopph\Tests\Customer\Domain\Model;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Shopph\Contract\Foundation\Domain\Model\IdentityFactoryInterface;
 use Shopph\Customer\Domain\Model\CustomerFactory;
-use Shopph\Foundation\Contract\Model\IdentityFactoryInterface;
 
 use function Shopph\Tests\factory_identity;
 

@@ -2,8 +2,8 @@
 
 namespace Shopph\Foundation\Domain\Model;
 
-use Shopph\Foundation\Contract\Model\EntityInterface;
-use Shopph\Foundation\Contract\Model\IdentityInterface;
+use Shopph\Contract\Foundation\Domain\Model\EntityInterface;
+use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
 
 abstract class AbstractEntity implements EntityInterface
 {

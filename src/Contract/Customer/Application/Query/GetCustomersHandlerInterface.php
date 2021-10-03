@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Customer\Contract\Query;
+namespace Shopph\Contract\Customer\Application\Query;
 
 use Shopph\Customer\Application\Query\GetCustomers;
 use Shopph\Customer\Application\Query\GetCustomersResponse;
