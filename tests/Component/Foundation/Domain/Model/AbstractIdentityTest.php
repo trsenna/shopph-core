@@ -42,4 +42,15 @@ final class AbstractIdentityTest extends TestCase
         $identityOther = factory_identity($this->uuid4Other);
         $this->assertFalse($identity->equalsTo($identityOther));
     }
+
+    public function testCreateWhenBlankMustThrowException(): void
+    {
+        try {
+            factory_identity(' ');
+            $this->fail();
+        } catch (\InvalidArgumentException $e) {
+            $this->assertStringContainsString('value', $e->getMessage());
+            $this->assertStringContainsString('not blank', $e->getMessage());
+        }
+    }
 }
