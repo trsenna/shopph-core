@@ -21,12 +21,14 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Shopph\\": "src/"
+			"Shopph\\": "src/Component/",
+			"Shopph\\Contract\\": "src/Contract/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Shopph\\Tests\\": "tests/"
+			"Shopph\\Tests\\": "tests/Component/",
+			"Shopph\\Tests\\Contract\\": "tests/Contract/"
 		},
 		"files": [
 			"tests/functions-helpers.php"
