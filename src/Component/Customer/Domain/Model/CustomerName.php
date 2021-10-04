@@ -3,12 +3,10 @@
 namespace Shopph\Customer\Domain\Model;
 
 use Shopph\Contract\Foundation\Model\ValueObjectInterface;
-use Shopph\Shared\Verification\VerifyTrait;
+use Shopph\Shared\Foundation\Model\AbstractValueObject;
 
-class CustomerName implements ValueObjectInterface
+class CustomerName extends AbstractValueObject
 {
-    use VerifyTrait;
-
     private string $name;
 
     public function __construct(string $name)
