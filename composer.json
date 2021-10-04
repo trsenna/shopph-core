@@ -24,14 +24,12 @@
 			"Shopph\\": "src/Component/",
 			"Shopph\\Contract\\": "src/Contract/",
 			"Shopph\\Shared\\": "src/Shared/"
-		},
-		"files": [
-			"src/functions-helpers.php"
-		]
+		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Shopph\\Tests\\": "tests/Component/"
+			"Shopph\\Tests\\": "tests/Component/",
+			"Shopph\\Tests\\Shared\\": "tests/Shared/"
 		},
 		"files": [
 			"tests/functions-helpers.php"
