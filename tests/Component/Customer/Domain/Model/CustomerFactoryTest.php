@@ -6,11 +6,12 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Foundation\Model\IdentityFactoryInterface;
 use Shopph\Customer\Domain\Model\CustomerFactory;
-
-use function Shopph\Tests\factory_identity;
+use Shopph\Tests\Shared\FactoryHelperTrait;
 
 final class CustomerFactoryTest extends TestCase
 {
+    use FactoryHelperTrait;
+
     private ?IdentityFactoryInterface $identityFactory = null;
 
     public function setUp(): void
@@ -18,7 +19,7 @@ final class CustomerFactoryTest extends TestCase
         /** @var MockObject $identityFactoryMock */
         $identityFactoryMock = $this->createMock(IdentityFactoryInterface::class);
         $identityFactoryMock->method('create')->willReturn(
-            factory_identity('87ffd646-9ef8-473b-951c-28f53fe8cadc')
+            $this->createAbstractIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc')
         );
 
         $this->identityFactory = $identityFactoryMock;

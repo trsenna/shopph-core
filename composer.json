@@ -30,10 +30,7 @@
 		"psr-4": {
 			"Shopph\\Tests\\": "tests/Component/",
 			"Shopph\\Tests\\Shared\\": "tests/Shared/"
-		},
-		"files": [
-			"tests/functions-helpers.php"
-		]
+		}
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
