@@ -6,18 +6,18 @@ use PHPUnit\Framework\TestCase;
 use Shopph\Customer\Application\Event\StoredCustomer;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
-use Shopph\Tests\Shared\FactoryHelperTrait;
+use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
 
 final class StoredCustomerTest extends TestCase
 {
-    use FactoryHelperTrait;
+    use IdentityFakeTrait;
 
     private ?Customer $customer;
 
     public function setUp(): void
     {
         $this->customer = new Customer(
-            $this->createAbstractIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc'),
+            $this->fakeIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc'),
             new CustomerName('Jon')
         );
     }

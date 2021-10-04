@@ -7,18 +7,18 @@ use Shopph\Contract\Foundation\Model\IdentityInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
 use Shopph\Shared\Verification\VerifyException;
-use Shopph\Tests\Shared\FactoryHelperTrait;
+use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
 
 final class CustomerTest extends TestCase
 {
-    use FactoryHelperTrait;
+    use IdentityFakeTrait;
 
     private ?IdentityInterface $identity = null;
     private ?CustomerName $customerName = null;
 
     public function setUp(): void
     {
-        $this->identity = $this->createAbstractIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc');
+        $this->identity = $this->fakeIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc');
         $this->customerName = new CustomerName('Jon');
     }
 

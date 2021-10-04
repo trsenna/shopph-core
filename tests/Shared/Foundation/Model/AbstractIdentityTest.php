@@ -4,11 +4,11 @@ namespace Shopph\Tests\Shared\Foundation\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Shared\Verification\VerifyException;
-use Shopph\Tests\Shared\FactoryHelperTrait;
+use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
 
 final class AbstractIdentityTest extends TestCase
 {
-    use FactoryHelperTrait;
+    use IdentityFakeTrait;
 
     private ?string $uuid4 = null;
     private ?string $uuid4Other = null;
@@ -21,34 +21,34 @@ final class AbstractIdentityTest extends TestCase
 
     public function testValueWhenValueWithUUID4MustReturnUUID4String(): void
     {
-        $identity = $this->createAbstractIdentity($this->uuid4);
+        $identity = $this->fakeIdentity($this->uuid4);
         $this->assertEquals($this->uuid4, $identity->value());
     }
 
     public function testEqualsToWhenSameInstanceMustReturnTrue(): void
     {
-        $identity = $this->createAbstractIdentity($this->uuid4);
+        $identity = $this->fakeIdentity($this->uuid4);
         $this->assertTrue($identity->equalsTo($identity));
     }
 
     public function testEqualsToWhenSameValueMustReturnTrue(): void
     {
-        $identity = $this->createAbstractIdentity($this->uuid4);
-        $identityOther = $this->createAbstractIdentity($this->uuid4);
+        $identity = $this->fakeIdentity($this->uuid4);
+        $identityOther = $this->fakeIdentity($this->uuid4);
         $this->assertTrue($identity->equalsTo($identityOther));
     }
 
     public function testEqualsToWhenNotSameValueMustReturnFalse(): void
     {
-        $identity = $this->createAbstractIdentity($this->uuid4);
-        $identityOther = $this->createAbstractIdentity($this->uuid4Other);
+        $identity = $this->fakeIdentity($this->uuid4);
+        $identityOther = $this->fakeIdentity($this->uuid4Other);
         $this->assertFalse($identity->equalsTo($identityOther));
     }
 
     public function testCreateWhenValueIsBlankMustThrowException(): void
     {
         try {
-            $this->createAbstractIdentity(' ');
+            $this->fakeIdentity(' ');
             $this->fail();
         } catch (VerifyException $e) {
             $this->assertStringContainsString('value', $e->getMessage());
