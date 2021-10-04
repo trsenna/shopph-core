@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Tests\Foundation\Domain\Model;
+namespace Shopph\Tests\Shared\Foundation\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Shared\Verification\VerifyException;

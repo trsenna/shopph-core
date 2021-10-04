@@ -2,7 +2,7 @@
 
 namespace Shopph\Customer\Application\Event;
 
-use Shopph\Contract\Foundation\Domain\Event\EventInterface;
+use Shopph\Contract\Foundation\Event\EventInterface;
 use Shopph\Customer\Domain\Model\Customer;
 
 final class StoredCustomer implements EventInterface

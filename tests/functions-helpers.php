@@ -2,9 +2,9 @@
 
 namespace Shopph\Tests;
 
-use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
-use Shopph\Foundation\Domain\Model\AbstractEntity;
-use Shopph\Foundation\Domain\Model\AbstractIdentity;
+use Shopph\Contract\Foundation\Model\IdentityInterface;
+use Shopph\Shared\Foundation\Model\AbstractEntity;
+use Shopph\Shared\Foundation\Model\AbstractIdentity;
 
 if (!function_exists('factory_entity')) {
     function factory_entity(IdentityInterface $identity)

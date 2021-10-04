@@ -3,7 +3,7 @@
 namespace Shopph\Tests\Foundation\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
+use Shopph\Contract\Foundation\Model\IdentityInterface;
 
 use function Shopph\Tests\factory_entity;
 use function Shopph\Tests\factory_identity;

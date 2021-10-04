@@ -3,7 +3,7 @@
 namespace Shopph\Tests\Customer\Domain\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Foundation\Domain\Model\IdentityInterface;
+use Shopph\Contract\Foundation\Model\IdentityInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
 use Shopph\Shared\Verification\VerifyException;

@@ -2,10 +2,8 @@
 
 namespace Shopph\Customer\Domain\Model;
 
-use Shopph\Contract\Foundation\Domain\Model\ValueObjectInterface;
+use Shopph\Contract\Foundation\Model\ValueObjectInterface;
 use Shopph\Shared\Verification\VerifyTrait;
-
-use function Shopph\verify;
 
 class CustomerName implements ValueObjectInterface
 {
