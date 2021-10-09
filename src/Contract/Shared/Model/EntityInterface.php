@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Contract\Foundation\Model;
+namespace Shopph\Contract\Shared\Model;
 
 interface EntityInterface
 {

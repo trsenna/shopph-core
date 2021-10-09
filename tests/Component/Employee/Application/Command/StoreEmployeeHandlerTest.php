@@ -6,7 +6,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Employee\Domain\Model\EmployeeFactoryInterface;
 use Shopph\Contract\Employee\Domain\Model\EmployeeRepositoryInterface;
-use Shopph\Contract\Foundation\Event\DispatcherInterface;
+use Shopph\Contract\Shared\Event\DispatcherInterface;
 use Shopph\Employee\Application\Command\StoreEmployee;
 use Shopph\Employee\Application\Command\StoreEmployeeHandler;
 use Shopph\Employee\Domain\Model\Employee;

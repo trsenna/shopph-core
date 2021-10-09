@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Tests\Foundation\Domain\Model;
+namespace Shopph\Tests\Shared\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Foundation\Model\IdentityInterface;
+use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Tests\Shared\Helper\EntityFakeTrait;
 use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
 

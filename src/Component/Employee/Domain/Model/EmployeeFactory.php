@@ -3,7 +3,7 @@
 namespace Shopph\Employee\Domain\Model;
 
 use Shopph\Contract\Employee\Domain\Model\EmployeeFactoryInterface;
-use Shopph\Contract\Foundation\Model\IdentityFactoryInterface;
+use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
 
 final class EmployeeFactory implements EmployeeFactoryInterface
 {

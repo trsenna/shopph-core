@@ -1,9 +1,9 @@
 <?php
 
-namespace Shopph\Shared\Foundation\Model;
+namespace Shopph\Shared\Model;
 
-use Shopph\Contract\Foundation\Model\EntityInterface;
-use Shopph\Contract\Foundation\Model\IdentityInterface;
+use Shopph\Contract\Shared\Model\EntityInterface;
+use Shopph\Contract\Shared\Model\IdentityInterface;
 
 abstract class AbstractEntity implements EntityInterface
 {

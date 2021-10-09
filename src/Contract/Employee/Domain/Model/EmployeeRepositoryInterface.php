@@ -2,7 +2,7 @@
 
 namespace Shopph\Contract\Employee\Domain\Model;
 
-use Shopph\Contract\Foundation\Model\RepositoryInterface;
+use Shopph\Contract\Shared\Model\RepositoryInterface;
 use Shopph\Employee\Domain\Model\Employee;
 
 interface EmployeeRepositoryInterface extends RepositoryInterface

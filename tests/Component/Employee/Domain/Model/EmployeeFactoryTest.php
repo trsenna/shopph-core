@@ -4,7 +4,7 @@ namespace Shopph\Tests\Employee\Domain\Model;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Foundation\Model\IdentityFactoryInterface;
+use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
 use Shopph\Employee\Domain\Model\EmployeeFactory;
 use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
 

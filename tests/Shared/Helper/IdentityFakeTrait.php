@@ -2,7 +2,7 @@
 
 namespace Shopph\Tests\Shared\Helper;
 
-use Shopph\Shared\Foundation\Model\AbstractIdentity;
+use Shopph\Shared\Model\AbstractIdentity;
 
 trait IdentityFakeTrait
 {

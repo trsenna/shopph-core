@@ -1,8 +1,8 @@
 <?php
 
-namespace Shopph\Shared\Foundation\Model;
+namespace Shopph\Shared\Model;
 
-use Shopph\Contract\Foundation\Model\IdentityInterface;
+use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Shared\Verification\VerifyTrait;
 
 abstract class AbstractIdentity implements IdentityInterface
