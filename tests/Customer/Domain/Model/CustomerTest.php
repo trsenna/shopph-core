@@ -7,11 +7,11 @@ use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
 use Shopph\Shared\Verification\VerifyException;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class CustomerTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?IdentityInterface $identity = null;
     private ?CustomerName $customerName = null;

@@ -7,11 +7,11 @@ use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Employee\Domain\Model\Employee;
 use Shopph\Employee\Domain\Model\EmployeeName;
 use Shopph\Shared\Verification\VerifyException;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class EmployeeTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?IdentityInterface $identity = null;
     private ?EmployeeName $employeeName = null;

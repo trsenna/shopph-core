@@ -6,11 +6,11 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
 use Shopph\Employee\Domain\Model\EmployeeFactory;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class EmployeeFactoryTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?IdentityFactoryInterface $identityFactory = null;
 

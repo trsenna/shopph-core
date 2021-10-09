@@ -1,11 +1,11 @@
 <?php
 
-namespace Shopph\Tests\Shared\Helper;
+namespace Shopph\Tests\Shared\Faker;
 
 use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Shared\Model\AbstractEntity;
 
-trait EntityFakeTrait
+trait EntityFakerTrait
 {
     public final function fakeEntity(IdentityInterface $identity)
     {

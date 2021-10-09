@@ -4,11 +4,11 @@ namespace Shopph\Tests\Shared\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Shared\Verification\VerifyException;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class AbstractIdentityTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?string $uuid4 = null;
     private ?string $uuid4Other = null;

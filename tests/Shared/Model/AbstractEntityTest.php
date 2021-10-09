@@ -4,13 +4,13 @@ namespace Shopph\Tests\Shared\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Shared\Model\IdentityInterface;
-use Shopph\Tests\Shared\Helper\EntityFakeTrait;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\EntityFakerTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class AbstractEntityTest extends TestCase
 {
-    use EntityFakeTrait;
-    use IdentityFakeTrait;
+    use EntityFakerTrait;
+    use IdentityFakerTrait;
 
     private ?IdentityInterface $identity = null;
 

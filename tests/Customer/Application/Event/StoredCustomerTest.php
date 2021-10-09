@@ -6,11 +6,11 @@ use PHPUnit\Framework\TestCase;
 use Shopph\Customer\Application\Event\StoredCustomer;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoredCustomerTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?Customer $customer;
 

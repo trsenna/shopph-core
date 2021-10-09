@@ -6,11 +6,11 @@ use PHPUnit\Framework\TestCase;
 use Shopph\Employee\Application\Event\StoredEmployee;
 use Shopph\Employee\Domain\Model\Employee;
 use Shopph\Employee\Domain\Model\EmployeeName;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoredEmployeeTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?Employee $employee;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Shopph\Tests\Shared\Helper;
+namespace Shopph\Tests\Shared\Faker;
 
 use Shopph\Shared\Model\AbstractIdentity;
 
-trait IdentityFakeTrait
+trait IdentityFakerTrait
 {
     public final function fakeIdentity(string $value)
     {

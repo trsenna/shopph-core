@@ -11,11 +11,11 @@ use Shopph\Employee\Application\Command\StoreEmployee;
 use Shopph\Employee\Application\Command\StoreEmployeeHandler;
 use Shopph\Employee\Domain\Model\Employee;
 use Shopph\Employee\Domain\Model\EmployeeName;
-use Shopph\Tests\Shared\Helper\IdentityFakeTrait;
+use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoreEmployeeHandlerTest extends TestCase
 {
-    use IdentityFakeTrait;
+    use IdentityFakerTrait;
 
     private ?StoreEmployee $command;
     private ?StoreEmployeeHandler $commandHandler;
