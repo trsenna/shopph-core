@@ -21,15 +21,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Shopph\\": "src/Component/",
-			"Shopph\\Contract\\": "src/Contract/",
-			"Shopph\\Shared\\": "src/Shared/"
+			"Shopph\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Shopph\\Tests\\": "tests/Component/",
-			"Shopph\\Tests\\Shared\\": "tests/Shared/"
+			"Shopph\\Tests\\": "tests/"
 		}
 	},
 	"minimum-stability": "dev",
