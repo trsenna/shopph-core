@@ -2,8 +2,8 @@
 
 namespace Shopph\Application\Employee\Event;
 
-use Shopph\Contract\Shared\Event\EventInterface;
 use Shopph\Domain\Employee\Model\Employee;
+use Shopph\Shared\Contract\Event\EventInterface;
 
 final class StoredEmployee implements EventInterface
 {

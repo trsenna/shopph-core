@@ -2,8 +2,8 @@
 
 namespace Shopph\Domain\Product\Model;
 
-use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
 use Shopph\Domain\Contract\Model\ProductFactoryInterface;
+use Shopph\Shared\Contract\Model\IdentityFactoryInterface;
 
 final class ProductFactory implements ProductFactoryInterface
 {

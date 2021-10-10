@@ -3,9 +3,9 @@
 namespace Shopph\Tests\Domain\Employee\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Domain\Employee\Model\Employee;
 use Shopph\Domain\Employee\Model\EmployeeName;
+use Shopph\Shared\Contract\Model\IdentityInterface;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class EmployeeTest extends TestCase

@@ -4,9 +4,9 @@ namespace Shopph\Application\Employee\Command;
 
 use Shopph\Application\Contract\Command\StoreEmployeeHandlerInterface;
 use Shopph\Application\Employee\Event\StoredEmployee;
-use Shopph\Contract\Shared\Event\DispatcherInterface;
 use Shopph\Domain\Contract\Model\EmployeeFactoryInterface;
 use Shopph\Domain\Contract\Model\EmployeeRepositoryInterface;
+use Shopph\Shared\Contract\Event\DispatcherInterface;
 
 final class StoreEmployeeHandler implements StoreEmployeeHandlerInterface
 {

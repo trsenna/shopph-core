@@ -3,10 +3,10 @@
 namespace Shopph\Tests\Domain\Product\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
 use Shopph\Domain\Contract\Model\ProductFactoryInterface;
 use Shopph\Domain\Product\Model\Product;
 use Shopph\Domain\Product\Model\ProductFactory;
+use Shopph\Shared\Contract\Model\IdentityFactoryInterface;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class ProductFactoryTest extends TestCase

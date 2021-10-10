@@ -4,9 +4,9 @@ namespace Shopph\Application\Customer\Command;
 
 use Shopph\Application\Contract\Command\StoreCustomerHandlerInterface;
 use Shopph\Application\Customer\Event\StoredCustomer;
-use Shopph\Contract\Shared\Event\DispatcherInterface;
 use Shopph\Domain\Contract\Model\CustomerFactoryInterface;
 use Shopph\Domain\Contract\Model\CustomerRepositoryInterface;
+use Shopph\Shared\Contract\Event\DispatcherInterface;
 
 final class StoreCustomerHandler implements StoreCustomerHandlerInterface
 {

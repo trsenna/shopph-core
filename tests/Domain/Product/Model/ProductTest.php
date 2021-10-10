@@ -3,9 +3,9 @@
 namespace Shopph\Tests\Domain\Product\Model;
 
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Domain\Product\Model\Product;
 use Shopph\Domain\Product\Model\ProductPrice;
+use Shopph\Shared\Contract\Model\IdentityInterface;
 use Shopph\Shared\Verification\VerifyException;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Contract\Shared\Model;
+namespace Shopph\Shared\Contract\Model;
 
 interface IdentityFactoryInterface
 {

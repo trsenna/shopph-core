@@ -2,7 +2,7 @@
 
 namespace Shopph\Domain\Customer\Model;
 
-use Shopph\Contract\Shared\Model\ValueObjectInterface;
+use Shopph\Shared\Contract\Model\ValueObjectInterface;
 use Shopph\Shared\Model\AbstractValueObject;
 
 class CustomerName extends AbstractValueObject

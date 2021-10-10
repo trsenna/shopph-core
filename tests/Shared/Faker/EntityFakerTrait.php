@@ -2,7 +2,7 @@
 
 namespace Shopph\Tests\Shared\Faker;
 
-use Shopph\Contract\Shared\Model\IdentityInterface;
+use Shopph\Shared\Contract\Model\IdentityInterface;
 use Shopph\Shared\Model\AbstractEntity;
 
 trait EntityFakerTrait

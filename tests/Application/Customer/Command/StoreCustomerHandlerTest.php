@@ -6,11 +6,11 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Shopph\Application\Customer\Command\StoreCustomer;
 use Shopph\Application\Customer\Command\StoreCustomerHandler;
-use Shopph\Contract\Shared\Event\DispatcherInterface;
 use Shopph\Domain\Contract\Model\CustomerFactoryInterface;
 use Shopph\Domain\Contract\Model\CustomerRepositoryInterface;
 use Shopph\Domain\Customer\Model\Customer;
 use Shopph\Domain\Customer\Model\CustomerName;
+use Shopph\Shared\Contract\Event\DispatcherInterface;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoreCustomerHandlerTest extends TestCase

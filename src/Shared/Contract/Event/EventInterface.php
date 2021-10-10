@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Contract\Shared\Event;
+namespace Shopph\Shared\Contract\Event;
 
 interface EventInterface
 {

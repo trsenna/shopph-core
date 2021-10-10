@@ -2,7 +2,7 @@
 
 namespace Shopph\Domain\Employee\Model;
 
-use Shopph\Contract\Shared\Model\IdentityInterface;
+use Shopph\Shared\Contract\Model\IdentityInterface;
 use Shopph\Shared\Model\AbstractEntity;
 
 class Employee extends AbstractEntity

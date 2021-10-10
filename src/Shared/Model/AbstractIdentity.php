@@ -2,7 +2,7 @@
 
 namespace Shopph\Shared\Model;
 
-use Shopph\Contract\Shared\Model\IdentityInterface;
+use Shopph\Shared\Contract\Model\IdentityInterface;
 use Shopph\Shared\Verification\VerifyTrait;
 
 abstract class AbstractIdentity implements IdentityInterface
