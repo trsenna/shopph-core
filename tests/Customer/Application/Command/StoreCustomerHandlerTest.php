@@ -4,13 +4,13 @@ namespace Shopph\Tests\Customer\Application\Command;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Customer\Domain\Model\CustomerFactoryInterface;
-use Shopph\Contract\Customer\Domain\Model\CustomerRepositoryInterface;
 use Shopph\Contract\Shared\Event\DispatcherInterface;
 use Shopph\Customer\Application\Command\StoreCustomer;
 use Shopph\Customer\Application\Command\StoreCustomerHandler;
-use Shopph\Customer\Domain\Model\Customer;
-use Shopph\Customer\Domain\Model\CustomerName;
+use Shopph\Domain\Contract\Model\CustomerFactoryInterface;
+use Shopph\Domain\Contract\Model\CustomerRepositoryInterface;
+use Shopph\Domain\Customer\Model\Customer;
+use Shopph\Domain\Customer\Model\CustomerName;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoreCustomerHandlerTest extends TestCase

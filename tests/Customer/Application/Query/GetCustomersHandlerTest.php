@@ -4,10 +4,10 @@ namespace Shopph\Tests\Customer\Application\Command;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Customer\Domain\Model\CustomerFinderInterface;
 use Shopph\Customer\Application\Query\GetCustomers;
 use Shopph\Customer\Application\Query\GetCustomersHandler;
 use Shopph\Customer\Application\Query\GetCustomersResponse;
+use Shopph\Domain\Contract\Model\CustomerFinderInterface;
 
 final class GetCustomersHandlerTest extends TestCase
 {

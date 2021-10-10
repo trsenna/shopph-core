@@ -4,13 +4,13 @@ namespace Shopph\Tests\Employee\Application\Command;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Employee\Domain\Model\EmployeeFactoryInterface;
-use Shopph\Contract\Employee\Domain\Model\EmployeeRepositoryInterface;
 use Shopph\Contract\Shared\Event\DispatcherInterface;
+use Shopph\Domain\Contract\Model\EmployeeFactoryInterface;
+use Shopph\Domain\Contract\Model\EmployeeRepositoryInterface;
+use Shopph\Domain\Employee\Model\Employee;
+use Shopph\Domain\Employee\Model\EmployeeName;
 use Shopph\Employee\Application\Command\StoreEmployee;
 use Shopph\Employee\Application\Command\StoreEmployeeHandler;
-use Shopph\Employee\Domain\Model\Employee;
-use Shopph\Employee\Domain\Model\EmployeeName;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoreEmployeeHandlerTest extends TestCase

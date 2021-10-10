@@ -4,7 +4,7 @@ namespace Shopph\Tests\Employee\Application\Command;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Shopph\Contract\Employee\Domain\Model\EmployeeFinderInterface;
+use Shopph\Domain\Contract\Model\EmployeeFinderInterface;
 use Shopph\Employee\Application\Query\GetEmployees;
 use Shopph\Employee\Application\Query\GetEmployeesHandler;
 use Shopph\Employee\Application\Query\GetEmployeesResponse;

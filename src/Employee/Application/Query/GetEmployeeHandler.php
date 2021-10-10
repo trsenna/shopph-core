@@ -3,7 +3,7 @@
 namespace Shopph\Employee\Application\Query;
 
 use Shopph\Contract\Employee\Application\Query\GetEmployeeHandlerInterface;
-use Shopph\Contract\Employee\Domain\Model\EmployeeFinderInterface;
+use Shopph\Domain\Contract\Model\EmployeeFinderInterface;
 
 final class GetEmployeeHandler implements GetEmployeeHandlerInterface
 {

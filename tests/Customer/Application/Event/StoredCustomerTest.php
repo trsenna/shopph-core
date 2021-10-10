@@ -4,8 +4,8 @@ namespace Shopph\Tests\Customer\Application\Event;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Customer\Application\Event\StoredCustomer;
-use Shopph\Customer\Domain\Model\Customer;
-use Shopph\Customer\Domain\Model\CustomerName;
+use Shopph\Domain\Customer\Model\Customer;
+use Shopph\Domain\Customer\Model\CustomerName;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoredCustomerTest extends TestCase

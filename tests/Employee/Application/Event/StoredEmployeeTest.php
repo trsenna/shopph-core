@@ -3,9 +3,9 @@
 namespace Shopph\Tests\Employee\Application\Event;
 
 use PHPUnit\Framework\TestCase;
+use Shopph\Domain\Employee\Model\Employee;
+use Shopph\Domain\Employee\Model\EmployeeName;
 use Shopph\Employee\Application\Event\StoredEmployee;
-use Shopph\Employee\Domain\Model\Employee;
-use Shopph\Employee\Domain\Model\EmployeeName;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoredEmployeeTest extends TestCase
