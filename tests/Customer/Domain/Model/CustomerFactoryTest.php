@@ -4,7 +4,9 @@ namespace Shopph\Tests\Customer\Domain\Model;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Shopph\Contract\Customer\Domain\Model\CustomerFactoryInterface;
 use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
+use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerFactory;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
@@ -12,7 +14,8 @@ final class CustomerFactoryTest extends TestCase
 {
     use IdentityFakerTrait;
 
-    private ?IdentityFactoryInterface $identityFactory = null;
+    private ?IdentityFactoryInterface $identityFactory;
+    private ?CustomerFactoryInterface $customerFactory;
 
     public function setUp(): void
     {
@@ -23,28 +26,30 @@ final class CustomerFactoryTest extends TestCase
         );
 
         $this->identityFactory = $identityFactoryMock;
+        $this->customerFactory = new CustomerFactory($this->identityFactory);
+    }
+
+    public function testCreateWhenCalledMustReturnCustomer()
+    {
+        $customer = $this->customerFactory->create('Jon');
+        $this->assertNotNull($customer);
+        $this->assertInstanceOf(Customer::class, $customer);
     }
 
     public function testCreateWhenCalledMustReturnCustomerWithIdentity()
     {
-        $customerFactory = new CustomerFactory($this->identityFactory);
-
-        $customer = $customerFactory->create('Jon');
+        $customer = $this->customerFactory->create('Jon');
         $customerIdentity = $customer->getIdentity();
 
-        $this->assertNotNull($customer);
         $this->assertNotNull($customerIdentity);
         $this->assertEquals('87ffd646-9ef8-473b-951c-28f53fe8cadc', $customerIdentity->value());
     }
 
     public function testCreateWhenCalledMustReturnCustomerWithName()
     {
-        $customerFactory = new CustomerFactory($this->identityFactory);
-
-        $customer = $customerFactory->create('Jon');
+        $customer = $this->customerFactory->create('Jon');
         $customerName = $customer->getName();
 
-        $this->assertNotNull($customer);
         $this->assertNotNull($customerName);
         $this->assertEquals('Jon', $customerName->getFullName());
     }

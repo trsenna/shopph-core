@@ -5,6 +5,7 @@ namespace Shopph\Tests\Product\Domain\Model;
 use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Product\Domain\Model\ProductFactoryInterface;
 use Shopph\Contract\Shared\Model\IdentityFactoryInterface;
+use Shopph\Product\Domain\Model\Product;
 use Shopph\Product\Domain\Model\ProductFactory;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
@@ -31,6 +32,7 @@ final class ProductFactoryTest extends TestCase
     {
         $product = $this->productFactory->create('Product #1', 10.7);
         $this->assertNotNull($product);
+        $this->assertInstanceOf(Product::class, $product);
     }
 
     public function testCreateWhenCalledMustReturnProductWithIdentity()

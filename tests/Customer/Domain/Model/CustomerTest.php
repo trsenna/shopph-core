@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use Shopph\Contract\Shared\Model\IdentityInterface;
 use Shopph\Customer\Domain\Model\Customer;
 use Shopph\Customer\Domain\Model\CustomerName;
-use Shopph\Shared\Verification\VerifyException;
 use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class CustomerTest extends TestCase
@@ -26,16 +25,5 @@ final class CustomerTest extends TestCase
     {
         $customer = new Customer($this->identity, $this->customerName);
         $this->assertSame($this->customerName, $customer->getName());
-    }
-
-    public function testCreateWhenNameIsBlankMustThrowException(): void
-    {
-        try {
-            new CustomerName(' ');
-            $this->fail();
-        } catch (VerifyException $e) {
-            $this->assertStringContainsString('name', $e->getMessage());
-            $this->assertStringContainsString('not blank', $e->getMessage());
-        }
     }
 }
