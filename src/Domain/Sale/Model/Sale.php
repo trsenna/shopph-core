@@ -7,18 +7,18 @@ use Shopph\Shared\Model\AbstractEntity;
 
 class Sale extends AbstractEntity
 {
-    private SalePrice $price;
     private IdentityInterface $productId;
     private IdentityInterface $employeeId;
     private IdentityInterface $customerId;
+    private SalePrice $price;
     private \DateTime $date;
 
     public function __construct(
         IdentityInterface $identity,
-        SalePrice $price,
         IdentityInterface $productId,
         IdentityInterface $employeeId,
         IdentityInterface $customerId,
+        SalePrice $price,
         \DateTime $date
     ) {
         parent::__construct($identity);
@@ -28,11 +28,6 @@ class Sale extends AbstractEntity
         $this->employeeId = $employeeId;
         $this->customerId = $customerId;
         $this->date = $date;
-    }
-
-    public function getPrice(): SalePrice
-    {
-        return $this->price;
     }
 
     public function getProductId(): IdentityInterface
@@ -48,6 +43,11 @@ class Sale extends AbstractEntity
     public function getCustomerId(): IdentityInterface
     {
         return $this->customerId;
+    }
+
+    public function getPrice(): SalePrice
+    {
+        return $this->price;
     }
 
     public function getDate(): \DateTime
