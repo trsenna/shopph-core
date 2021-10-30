@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopph\Tests\Domain\Product\Model;
+namespace Shopph\Tests\Domain\Sale\Model;
 
 use PHPUnit\Framework\TestCase;
 use Shopph\Domain\Sale\Model\Sale;
