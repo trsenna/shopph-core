@@ -18,9 +18,9 @@ final class StoredSale implements EventInterface
     {
         $event = new static();
         $event->id = $sale->getIdentity()->value();
-        $event->productId = $sale->getProductId();
-        $event->employeeId = $sale->getEmployeeId();
-        $event->customerId = $sale->getCustomerId();
+        $event->productId = $sale->getProductId()->value();
+        $event->employeeId = $sale->getEmployeeId()->value();
+        $event->customerId = $sale->getCustomerId()->value();
         $event->price = $sale->getPrice()->getValue();
         $event->date = $sale->getDate();
 
