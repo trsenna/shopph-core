@@ -47,16 +47,16 @@ final class StoreSaleHandler implements StoreSaleHandlerInterface
     public function execute(StoreSale $command): void
     {
         $productIdentity = $this->identityFactory->valueOf($command->productId);
-        $product = $this->productRepository->ofIdentity($productIdentity);
-        static::verify('no product found', is_null($product));
-
         $employeeIdentity = $this->identityFactory->valueOf($command->employeeId);
-        $employee = $this->employeeRepository->ofIdentity($employeeIdentity);
-        static::verify('no employee found', is_null($employee));
-
         $customerIdentity = $this->identityFactory->valueOf($command->customerId);
+
+        $product = $this->productRepository->ofIdentity($productIdentity);
+        $employee = $this->employeeRepository->ofIdentity($employeeIdentity);
         $customer = $this->customerRepository->ofIdentity($customerIdentity);
-        static::verify('no customer found', is_null($customer));
+
+        static::verify('no product found', !is_null($product));
+        static::verify('no employee found', !is_null($employee));
+        static::verify('no customer found', !is_null($customer));
 
         $salePrice = new SalePrice($command->unitPrice, $command->quantity);
 

@@ -5,7 +5,7 @@ namespace Shopph\Domain\Sale\Model;
 use Shopph\Shared\Contract\Model\ValueObjectInterface;
 use Shopph\Shared\Model\AbstractValueObject;
 
-final class SalePrice extends AbstractValueObject
+class SalePrice extends AbstractValueObject
 {
     private float $value;
 
