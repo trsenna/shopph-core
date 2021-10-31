@@ -29,8 +29,7 @@ final class StoreProductHandler implements StoreProductHandlerInterface
         $product = $this->productFactory->create($command->name, $command->price);
         $this->productRepository->add($product);
 
-        $this->dispatcher->dispatch(
-            StoredProduct::fromEntity($product)
-        );
+        $storedProductEvent = StoredProduct::fromEntity($product);
+        $this->dispatcher->dispatch($storedProductEvent);
     }
 }
