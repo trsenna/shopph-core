@@ -2,12 +2,10 @@
 
 namespace Shopph\Tests\Domain\Sale\Model;
 
-use phpDocumentor\Reflection\Types\This;
 use PHPUnit\Framework\TestCase;
 use Shopph\Domain\Contract\Model\SaleFactoryInterface;
 use Shopph\Domain\Customer\Model\Customer;
 use Shopph\Domain\Employee\Model\Employee;
-use Shopph\Domain\Employee\Model\EmployeeName;
 use Shopph\Domain\Product\Model\Product;
 use Shopph\Domain\Sale\Model\Sale;
 use Shopph\Domain\Sale\Model\SaleFactory;
@@ -64,56 +62,66 @@ final class SaleFactoryTest extends TestCase
         $this->price = new SalePrice(5, 2);
     }
 
-    public function testCreateWhenCalledMustReturnSale()
+    public function testCreateWhenCalledMustReturnSale(): void
     {
-        $sale = $this->saleFactory->create($this->product, $this->employee, $this->customer, $this->price);
+        $sale = $this->createSale();
 
         $this->assertNotNull($sale);
         $this->assertInstanceOf(Sale::class, $sale);
     }
 
-    public function testCreateWhenCalledMustReturnSaleWithIdentity()
+    public function testCreateWhenCalledMustReturnSaleWithIdentity(): void
     {
-        $sale = $this->saleFactory->create($this->product, $this->employee, $this->customer, $this->price);
+        $sale = $this->createSale();
         $saleIdentity = $sale->getIdentity();
 
         $this->assertNotNull($sale->getIdentity());
         $this->assertEquals('87ffd646-9ef8-473b-951c-28f53fe8cadc', $saleIdentity->value());
     }
 
-    public function testCreateWhenCalledMustReturnSaleWithProductId()
+    public function testCreateWhenCalledMustReturnSaleWithProductId(): void
     {
-        $sale = $this->saleFactory->create($this->product, $this->employee, $this->customer, $this->price);
+        $sale = $this->createSale();
         $productId = $sale->getProductId();
 
         $this->assertNotNull($productId);
         $this->assertSame($this->product->getIdentity(), $productId);
     }
 
-    public function testCreateWhenCalledMustReturnSaleWithEmployeeId()
+    public function testCreateWhenCalledMustReturnSaleWithEmployeeId(): void
     {
-        $sale = $this->saleFactory->create($this->product, $this->employee, $this->customer, $this->price);
+        $sale = $this->createSale();
         $employeeId = $sale->getEmployeeId();
 
         $this->assertNotNull($employeeId);
         $this->assertSame($this->employee->getIdentity(), $employeeId);
     }
 
-    public function testCreateWhenCalledMustReturnSaleWithCustomerId()
+    public function testCreateWhenCalledMustReturnSaleWithCustomerId(): void
     {
-        $sale = $this->saleFactory->create($this->product, $this->employee, $this->customer, $this->price);
+        $sale = $this->createSale();
         $customerId = $sale->getCustomerId();
 
         $this->assertNotNull($customerId);
         $this->assertSame($this->customer->getIdentity(), $customerId);
     }
 
-    public function testCreateWhenCalledMustReturnSaleWithPrice()
+    public function testCreateWhenCalledMustReturnSaleWithPrice(): void
     {
-        $sale = $this->saleFactory->create($this->product, $this->employee, $this->customer, $this->price);
+        $sale = $this->createSale();
         $salePrice = $sale->getPrice();
 
         $this->assertNotNull($salePrice);
         $this->assertSame($this->price, $salePrice);
+    }
+
+    private function createSale(): Sale
+    {
+        return $this->saleFactory->create(
+            $this->product,
+            $this->employee,
+            $this->customer,
+            $this->price
+        );
     }
 }
