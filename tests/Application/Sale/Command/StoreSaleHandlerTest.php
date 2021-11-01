@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Shopph\Application\Contract\Command\StoreSaleHandlerInterface;
 use Shopph\Application\Sale\Command\StoreSale;
 use Shopph\Application\Sale\Command\StoreSaleHandler;
+use Shopph\Application\Sale\Event\StoredSale;
 use Shopph\Domain\Contract\Model\CustomerRepositoryInterface;
 use Shopph\Domain\Contract\Model\EmployeeRepositoryInterface;
 use Shopph\Domain\Contract\Model\ProductRepositoryInterface;
@@ -15,6 +16,8 @@ use Shopph\Domain\Contract\Model\SaleRepositoryInterface;
 use Shopph\Domain\Customer\Model\Customer;
 use Shopph\Domain\Employee\Model\Employee;
 use Shopph\Domain\Product\Model\Product;
+use Shopph\Domain\Sale\Model\Sale;
+use Shopph\Domain\Sale\Model\SalePrice;
 use Shopph\Shared\Contract\Event\DispatcherInterface;
 use Shopph\Shared\Contract\Model\IdentityFactoryInterface;
 use Shopph\Shared\Verification\VerifyException;
@@ -67,10 +70,6 @@ final class StoreSaleHandlerTest extends TestCase
             $this->dispatcherMock
         );
 
-        $this->productMock = $this->createMock(Product::class);
-        $this->employeeMock = $this->createMock(Employee::class);
-        $this->customerMock = $this->createMock(Customer::class);
-
         $this->identityFactoryMock
             ->method('valueOf')
             ->withConsecutive(
@@ -83,6 +82,10 @@ final class StoreSaleHandlerTest extends TestCase
                 $this->fakeIdentity($this->command->employeeId),
                 $this->fakeIdentity($this->command->customerId)
             );
+
+        $this->productMock = $this->createMock(Product::class);
+        $this->employeeMock = $this->createMock(Employee::class);
+        $this->customerMock = $this->createMock(Customer::class);
     }
 
     public function testExecute__MustCreateRelatedIdentities(): void
@@ -181,54 +184,50 @@ final class StoreSaleHandlerTest extends TestCase
         }
     }
 
-    // public function testExecute__MustFindByRelatedIdentities(): void
-    // {
-    //     $this->identityFactoryMock
-    //         ->method('valueOf')
-    //         ->withConsecutive(
-    //             [$this->command->productId],
-    //             [$this->command->employeeId],
-    //             [$this->command->customerId],
-    //         )
-    //         ->willReturnOnConsecutiveCalls(
-    //             $this->fakeIdentity($this->command->productId),
-    //             $this->fakeIdentity($this->command->employeeId),
-    //             $this->fakeIdentity($this->command->customerId)
-    //         );
+    public function testExecute__MustCreateSale(): void
+    {
+        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
+        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
+        $this->customerRepositoryMock->method('ofIdentity')->willreturn($this->customerMock);
 
-    //     $this->productRepositoryMock->expects($this->once())->method('ofIdentity')->with($this->fakeIdentity($this->command->productId));
-    //     $this->employeeRepositoryMock->expects($this->once())->method('ofIdentity')->with($this->fakeIdentity($this->command->employeeId));
-    //     $this->customerRepositoryMock->expects($this->once())->method('ofIdentity')->with($this->fakeIdentity($this->command->customerId));
+        $this->saleFactoryMock->expects($this->once())
+            ->method('create')
+            ->with(
+                $this->productMock,
+                $this->employeeMock,
+                $this->customerMock,
+                $this->isInstanceOf(SalePrice::class)
+            );
 
-    //     $this->commandHandler->execute($this->command);
-    // }
+        $this->commandHandler->execute($this->command);
+    }
 
-    // public function testExecute__MustCreateProduct(): void
-    // {
-    //     $product = $this->createMock(Product::class);
-    //     $this->productFactoryMock->expects($this->once())
-    //         ->method('create')
-    //         ->with($this->command->name, $this->command->price)
-    //         ->willReturn($product);
+    public function testExecute__MustAddSale(): void
+    {
+        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
+        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
+        $this->customerRepositoryMock->method('ofIdentity')->willreturn($this->customerMock);
 
-    //     $this->commandHandler->execute($this->command);
-    // }
+        $sale = $this->createMock(Sale::class);
+        $this->saleFactoryMock->method('create')->willReturn($sale);
 
-    // public function testExecute__MustAddProduct(): void
-    // {
-    //     $product = $this->createMock(Product::class);
-    //     $this->productFactoryMock->method('create')->willReturn($product);
-    //     $this->productRepositoryMock->expects($this->once())->method('add')->with($product);
+        $this->saleRepositoryMock->expects($this->once())->method('add')->with($sale);
 
-    //     $this->commandHandler->execute($this->command);
-    // }
+        $this->commandHandler->execute($this->command);
+    }
 
-    // public function testExecute__MustDispatchEvent(): void
-    // {
-    //     $product = $this->createMock(Product::class);
-    //     $this->productFactoryMock->method('create')->willReturn($product);
-    //     $this->dispatcherMock->expects($this->once())->method('dispatch');
+    public function testExecute__MustDispatchEvent(): void
+    {
+        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
+        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
+        $this->customerRepositoryMock->method('ofIdentity')->willreturn($this->customerMock);
 
-    //     $this->commandHandler->execute($this->command);
-    // }
+        $sale = $this->createMock(Sale::class);
+        $this->saleFactoryMock->method('create')->willReturn($sale);
+
+        $this->dispatcherMock->expects($this->once())->method('dispatch')
+            ->with($this->isInstanceOf(StoredSale::class));
+
+        $this->commandHandler->execute($this->command);
+    }
 }
