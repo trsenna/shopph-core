@@ -67,12 +67,12 @@ final class GetSalesResponseTest extends TestCase
     public function testFromArray__MustReturnSalesWithFirstHavingPrice(): void
     {
         $response = GetSalesResponse::fromArray($this->sales);
-        $this->assertSame($this->sales[0]->price, $response->sales[0]->price);
+        $this->assertEquals($this->sales[0]->price, $response->sales[0]->price);
     }
 
     public function testFromArray__MustReturnSalesWithFirstHavingDate(): void
     {
         $response = GetSalesResponse::fromArray($this->sales);
-        $this->assertSame($this->sales[0]->date, $response->sales[0]->date);
+        $this->assertEquals($this->sales[0]->date, $response->sales[0]->date);
     }
 }

@@ -20,6 +20,7 @@ final class GetProductResponseTest extends TestCase
     public function testFromObject__MustReturnProduct(): void
     {
         $response = GetProductResponse::fromObject($this->product);
+        $this->assertInstanceOf(GetProductResponse::class, $response);
         $this->assertNotNull($response->product);
     }
 

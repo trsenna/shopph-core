@@ -20,6 +20,7 @@ final class GetProductsResponseTest extends TestCase
     public function testFromArray__MustReturnProducts(): void
     {
         $response = GetProductsResponse::fromArray($this->products);
+        $this->assertInstanceOf(GetProductsResponse::class, $response);
         $this->assertNotEmpty($response->products);
     }
 
@@ -32,12 +33,12 @@ final class GetProductsResponseTest extends TestCase
     public function testFromArray__MustReturnProductsWithFirstHavingName(): void
     {
         $response = GetProductsResponse::fromArray($this->products);
-        $this->assertEquals('Jon', $response->products[0]->name);
+        $this->assertEquals($this->products[0]->name, $response->products[0]->name);
     }
 
     public function testFromArray__MustReturnProductsWithFirstHavingPrice(): void
     {
         $response = GetProductsResponse::fromArray($this->products);
-        $this->assertEquals(7.6, $response->products[0]->price);
+        $this->assertEquals($this->products[0]->price, $response->products[0]->price);
     }
 }
