@@ -12,10 +12,10 @@ use Shopph\Shared\Contract\Model\IdentityInterface;
 final class StoredSaleTest extends TestCase
 {
     private ?String $uuid4Value;
-    private ?MockObject $saleIdentityMock;
-    private ?MockObject $productIdentityMock;
-    private ?MockObject $employeeIdentityMock;
-    private ?MockObject $customerIdentityMock;
+    private ?MockObject $saleIdentity;
+    private ?MockObject $productIdentity;
+    private ?MockObject $employeeIdentity;
+    private ?MockObject $customerIdentity;
     private ?SalePrice $salePrice;
     private ?\DateTime $saleDate;
     private ?Sale $sale;
@@ -23,20 +23,20 @@ final class StoredSaleTest extends TestCase
     public function setUp(): void
     {
         $this->uuid4Value = '87ffd646-9ef8-473b-951c-28f53fe8cadc';
-        $this->saleIdentityMock = $this->createMock(IdentityInterface::class);
-        $this->customerIdentityMock = $this->createMock(IdentityInterface::class);
-        $this->employeeIdentityMock = $this->createMock(IdentityInterface::class);
-        $this->productIdentityMock = $this->createMock(IdentityInterface::class);
+        $this->saleIdentity = $this->createMock(IdentityInterface::class);
+        $this->customerIdentity = $this->createMock(IdentityInterface::class);
+        $this->employeeIdentity = $this->createMock(IdentityInterface::class);
+        $this->productIdentity = $this->createMock(IdentityInterface::class);
 
         $this->salePrice = new SalePrice(7, 3);
         $this->saleDate = new \DateTime();
 
         $saleCass = new \ReflectionClass(Sale::class);
         $this->sale = $saleCass->newInstance(
-            $this->saleIdentityMock,
-            $this->productIdentityMock,
-            $this->employeeIdentityMock,
-            $this->customerIdentityMock,
+            $this->saleIdentity,
+            $this->productIdentity,
+            $this->employeeIdentity,
+            $this->customerIdentity,
             $this->salePrice,
             $this->saleDate,
         );
@@ -44,7 +44,7 @@ final class StoredSaleTest extends TestCase
 
     public function testFromEntity__MustHaveId(): void
     {
-        $this->saleIdentityMock->method('value')->willReturn($this->uuid4Value);
+        $this->saleIdentity->method('value')->willReturn($this->uuid4Value);
 
         $event = StoredSale::fromEntity($this->sale);
         $this->assertEquals($this->uuid4Value, $event->id);
@@ -52,7 +52,7 @@ final class StoredSaleTest extends TestCase
 
     public function testFromEntity__MustHaveProductId(): void
     {
-        $this->productIdentityMock->method('value')->willReturn($this->uuid4Value);
+        $this->productIdentity->method('value')->willReturn($this->uuid4Value);
 
         $event = StoredSale::fromEntity($this->sale);
         $this->assertEquals($this->uuid4Value, $event->productId);
@@ -60,7 +60,7 @@ final class StoredSaleTest extends TestCase
 
     public function testFromEntity__MustHaveEmployeeId(): void
     {
-        $this->employeeIdentityMock->method('value')->willReturn($this->uuid4Value);
+        $this->employeeIdentity->method('value')->willReturn($this->uuid4Value);
 
         $event = StoredSale::fromEntity($this->sale);
         $this->assertEquals($this->uuid4Value, $event->employeeId);
@@ -68,7 +68,7 @@ final class StoredSaleTest extends TestCase
 
     public function testFromEntity__MustHaveCustomerId(): void
     {
-        $this->customerIdentityMock->method('value')->willReturn($this->uuid4Value);
+        $this->customerIdentity->method('value')->willReturn($this->uuid4Value);
 
         $event = StoredSale::fromEntity($this->sale);
         $this->assertEquals($this->uuid4Value, $event->customerId);
