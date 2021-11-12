@@ -6,24 +6,23 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Shopph\Application\Employee\Command\StoreEmployee;
 use Shopph\Application\Employee\Command\StoreEmployeeHandler;
+use Shopph\Application\Employee\Event\StoredEmployee;
 use Shopph\Domain\Contract\Model\EmployeeFactoryInterface;
 use Shopph\Domain\Contract\Model\EmployeeRepositoryInterface;
 use Shopph\Domain\Employee\Model\Employee;
 use Shopph\Domain\Employee\Model\EmployeeName;
 use Shopph\Shared\Contract\Event\DispatcherInterface;
-use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoreEmployeeHandlerTest extends TestCase
 {
-    use IdentityFakerTrait;
-
-    private ?StoreEmployee $command;
-    private ?StoreEmployeeHandler $commandHandler;
-    private ?Employee $employee;
-
     private ?MockObject $employeeFactory;
     private ?MockObject $employeeRepository;
     private ?MockObject $dispatcher;
+
+    private ?StoreEmployee $command;
+    private ?StoreEmployeeHandler $commandHandler;
+
+    private ?MockObject $employee;
 
     public function setUp(): void
     {
@@ -41,29 +40,38 @@ final class StoreEmployeeHandlerTest extends TestCase
             $this->dispatcher
         );
 
-        $this->employee = new Employee(
-            $this->fakeIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc'),
-            new EmployeeName('Jon')
-        );
+        $employeeName = $this->createMock(EmployeeName::class);
+        $employeeName->method('getFullName')->willReturn('Jon');
+
+        $this->employee = $this->createMock(Employee::class);
+        $this->employee->method('getName')->willReturn($employeeName);
     }
 
-    public function testExecuteWhenCalledMustCreateEntity(): void
+    public function testExecut__MustCreateEmployee(): void
     {
-        $this->employeeFactory->expects($this->once())->method('create')->willReturn($this->employee);
+        $this->employeeFactory->expects($this->once())
+            ->method('create')
+            ->with($this->command->name)
+            ->willReturn($this->employee);
+
         $this->commandHandler->execute($this->command);
     }
 
-    public function testExecuteWhenCalledMustAddEmployee(): void
+    public function testExecute__MustAddEmployee(): void
     {
         $this->employeeFactory->method('create')->willReturn($this->employee);
         $this->employeeRepository->expects($this->once())->method('add')->with($this->employee);
+
         $this->commandHandler->execute($this->command);
     }
 
-    public function testExecuteWhenCalledMustDispatchEvent(): void
+    public function testExecute__MustDispatchEvent(): void
     {
         $this->employeeFactory->method('create')->willReturn($this->employee);
-        $this->dispatcher->expects($this->once())->method('dispatch');
+        $this->dispatcher->expects($this->once())
+            ->method('dispatch')
+            ->with($this->isInstanceOf(StoredEmployee::class));
+
         $this->commandHandler->execute($this->command);
     }
 }

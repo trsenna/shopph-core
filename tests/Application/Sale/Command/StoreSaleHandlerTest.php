@@ -27,30 +27,30 @@ final class StoreSaleHandlerTest extends TestCase
 {
     use IdentityFakerTrait;
 
-    private ?MockObject $identityFactoryMock;
-    private ?MockObject $saleFactoryMock;
-    private ?MockObject $productRepositoryMock;
-    private ?MockObject $employeeRepositoryMock;
-    private ?MockObject $customerRepositoryMock;
-    private ?MockObject $saleRepositoryMock;
-    private ?MockObject $dispatcherMock;
+    private ?MockObject $identityFactory;
+    private ?MockObject $saleFactory;
+    private ?MockObject $productRepository;
+    private ?MockObject $employeeRepository;
+    private ?MockObject $customerRepository;
+    private ?MockObject $saleRepository;
+    private ?MockObject $dispatcher;
 
     private ?StoreSale $command;
     private ?StoreSaleHandlerInterface $commandHandler;
 
-    private ?MockObject $productMock;
-    private ?MockObject $employeeMock;
-    private ?MockObject $customerMock;
+    private ?MockObject $product;
+    private ?MockObject $employee;
+    private ?MockObject $customer;
 
     public function setUp(): void
     {
-        $this->identityFactoryMock = $this->createMock(IdentityFactoryInterface::class);
-        $this->saleFactoryMock = $this->createMock(SaleFactoryInterface::class);
-        $this->productRepositoryMock = $this->createMock(ProductRepositoryInterface::class);
-        $this->employeeRepositoryMock = $this->createMock(EmployeeRepositoryInterface::class);
-        $this->customerRepositoryMock = $this->createMock(CustomerRepositoryInterface::class);
-        $this->saleRepositoryMock = $this->createMock(SaleRepositoryInterface::class);
-        $this->dispatcherMock = $this->createMock(DispatcherInterface::class);
+        $this->identityFactory = $this->createMock(IdentityFactoryInterface::class);
+        $this->saleFactory = $this->createMock(SaleFactoryInterface::class);
+        $this->productRepository = $this->createMock(ProductRepositoryInterface::class);
+        $this->employeeRepository = $this->createMock(EmployeeRepositoryInterface::class);
+        $this->customerRepository = $this->createMock(CustomerRepositoryInterface::class);
+        $this->saleRepository = $this->createMock(SaleRepositoryInterface::class);
+        $this->dispatcher = $this->createMock(DispatcherInterface::class);
 
         $this->command = new StoreSale();
         $this->command->productId = '32218f4d-434f-4249-9ac6-725d555f2ce2';
@@ -61,16 +61,16 @@ final class StoreSaleHandlerTest extends TestCase
 
         $reflection = new \ReflectionClass(StoreSaleHandler::class);
         $this->commandHandler = $reflection->newInstance(
-            $this->productRepositoryMock,
-            $this->employeeRepositoryMock,
-            $this->customerRepositoryMock,
-            $this->saleRepositoryMock,
-            $this->identityFactoryMock,
-            $this->saleFactoryMock,
-            $this->dispatcherMock
+            $this->productRepository,
+            $this->employeeRepository,
+            $this->customerRepository,
+            $this->saleRepository,
+            $this->identityFactory,
+            $this->saleFactory,
+            $this->dispatcher
         );
 
-        $this->identityFactoryMock
+        $this->identityFactory
             ->method('valueOf')
             ->withConsecutive(
                 [$this->command->productId],
@@ -83,18 +83,18 @@ final class StoreSaleHandlerTest extends TestCase
                 $this->fakeIdentity($this->command->customerId)
             );
 
-        $this->productMock = $this->createMock(Product::class);
-        $this->employeeMock = $this->createMock(Employee::class);
-        $this->customerMock = $this->createMock(Customer::class);
+        $this->product = $this->createMock(Product::class);
+        $this->employee = $this->createMock(Employee::class);
+        $this->customer = $this->createMock(Customer::class);
     }
 
     public function testExecute__MustCreateRelatedIdentities(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willReturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willReturn($this->customer);
 
-        $this->identityFactoryMock
+        $this->identityFactory
             ->expects($this->exactly(3))
             ->method('valueOf')
             ->withConsecutive(
@@ -108,45 +108,45 @@ final class StoreSaleHandlerTest extends TestCase
 
     public function testExecute__MustFindProductByIdentity(): void
     {
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willReturn($this->customerMock);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willReturn($this->customer);
 
         $productIdentity = $this->fakeIdentity($this->command->productId);
-        $this->productRepositoryMock->expects($this->once())->method('ofIdentity')
-            ->with($productIdentity)->willReturn($this->productMock);
+        $this->productRepository->expects($this->once())->method('ofIdentity')
+            ->with($productIdentity)->willReturn($this->product);
 
         $this->commandHandler->execute($this->command);
     }
 
     public function testExecute__MustFindEmployeeByIdentity(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willReturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->customerRepository->method('ofIdentity')->willReturn($this->customer);
 
         $employeeIdentity = $this->fakeIdentity($this->command->employeeId);
-        $this->employeeRepositoryMock->expects($this->once())->method('ofIdentity')
-            ->with($employeeIdentity)->willReturn($this->employeeMock);
+        $this->employeeRepository->expects($this->once())->method('ofIdentity')
+            ->with($employeeIdentity)->willReturn($this->employee);
 
         $this->commandHandler->execute($this->command);
     }
 
     public function testExecute__MustFindCustomerByIdentity(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
 
         $customerIdentity = $this->fakeIdentity($this->command->customerId);
-        $this->customerRepositoryMock->expects($this->once())->method('ofIdentity')
-            ->with($customerIdentity)->willReturn($this->customerMock);
+        $this->customerRepository->expects($this->once())->method('ofIdentity')
+            ->with($customerIdentity)->willReturn($this->customer);
 
         $this->commandHandler->execute($this->command);
     }
 
     public function testExecute__WhenNoProductFoundMustThrowException(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willreturn(null);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willReturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willreturn(null);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willReturn($this->customer);
 
         try {
             $this->commandHandler->execute($this->command);
@@ -158,9 +158,9 @@ final class StoreSaleHandlerTest extends TestCase
 
     public function testExecute__WhenNoEmployeeFoundMustThrowException(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willreturn(null);
-        $this->customerRepositoryMock->method('ofIdentity')->willReturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willreturn(null);
+        $this->customerRepository->method('ofIdentity')->willReturn($this->customer);
 
         try {
             $this->commandHandler->execute($this->command);
@@ -172,9 +172,9 @@ final class StoreSaleHandlerTest extends TestCase
 
     public function testExecute__WhenNoCustomerFoundMustThrowException(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willreturn(null);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willreturn(null);
 
         try {
             $this->commandHandler->execute($this->command);
@@ -186,16 +186,16 @@ final class StoreSaleHandlerTest extends TestCase
 
     public function testExecute__MustCreateSale(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willreturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willreturn($this->customer);
 
-        $this->saleFactoryMock->expects($this->once())
+        $this->saleFactory->expects($this->once())
             ->method('create')
             ->with(
-                $this->productMock,
-                $this->employeeMock,
-                $this->customerMock,
+                $this->product,
+                $this->employee,
+                $this->customer,
                 $this->isInstanceOf(SalePrice::class)
             );
 
@@ -204,28 +204,29 @@ final class StoreSaleHandlerTest extends TestCase
 
     public function testExecute__MustAddSale(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willreturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willreturn($this->customer);
 
         $sale = $this->createMock(Sale::class);
-        $this->saleFactoryMock->method('create')->willReturn($sale);
+        $this->saleFactory->method('create')->willReturn($sale);
 
-        $this->saleRepositoryMock->expects($this->once())->method('add')->with($sale);
+        $this->saleRepository->expects($this->once())->method('add')->with($sale);
 
         $this->commandHandler->execute($this->command);
     }
 
     public function testExecute__MustDispatchEvent(): void
     {
-        $this->productRepositoryMock->method('ofIdentity')->willReturn($this->productMock);
-        $this->employeeRepositoryMock->method('ofIdentity')->willReturn($this->employeeMock);
-        $this->customerRepositoryMock->method('ofIdentity')->willreturn($this->customerMock);
+        $this->productRepository->method('ofIdentity')->willReturn($this->product);
+        $this->employeeRepository->method('ofIdentity')->willReturn($this->employee);
+        $this->customerRepository->method('ofIdentity')->willreturn($this->customer);
 
         $sale = $this->createMock(Sale::class);
-        $this->saleFactoryMock->method('create')->willReturn($sale);
+        $this->saleFactory->method('create')->willReturn($sale);
 
-        $this->dispatcherMock->expects($this->once())->method('dispatch')
+        $this->dispatcher->expects($this->once())
+            ->method('dispatch')
             ->with($this->isInstanceOf(StoredSale::class));
 
         $this->commandHandler->execute($this->command);

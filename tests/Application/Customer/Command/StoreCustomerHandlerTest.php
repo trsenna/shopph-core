@@ -6,24 +6,23 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Shopph\Application\Customer\Command\StoreCustomer;
 use Shopph\Application\Customer\Command\StoreCustomerHandler;
+use Shopph\Application\Customer\Event\StoredCustomer;
 use Shopph\Domain\Contract\Model\CustomerFactoryInterface;
 use Shopph\Domain\Contract\Model\CustomerRepositoryInterface;
 use Shopph\Domain\Customer\Model\Customer;
 use Shopph\Domain\Customer\Model\CustomerName;
 use Shopph\Shared\Contract\Event\DispatcherInterface;
-use Shopph\Tests\Shared\Faker\IdentityFakerTrait;
 
 final class StoreCustomerHandlerTest extends TestCase
 {
-    use IdentityFakerTrait;
-
-    private ?StoreCustomer $command;
-    private ?StoreCustomerHandler $commandHandler;
-    private ?Customer $customer;
-
     private ?MockObject $customerFactory;
     private ?MockObject $customerRepository;
     private ?MockObject $dispatcher;
+
+    private ?StoreCustomer $command;
+    private ?StoreCustomerHandler $commandHandler;
+
+    private ?MockObject $customer;
 
     public function setUp(): void
     {
@@ -41,29 +40,38 @@ final class StoreCustomerHandlerTest extends TestCase
             $this->dispatcher
         );
 
-        $this->customer = new Customer(
-            $this->fakeIdentity('87ffd646-9ef8-473b-951c-28f53fe8cadc'),
-            new CustomerName('Jon')
-        );
+        $customerName = $this->createMock(CustomerName::class);
+        $customerName->method('getFullName')->willReturn('Jon');
+
+        $this->customer = $this->createMock(Customer::class);
+        $this->customer->method('getName')->willReturn($customerName);
     }
 
-    public function testExecuteWhenCalledMustCreateEntity(): void
+    public function testExecute__MustCreateCustomer(): void
     {
-        $this->customerFactory->expects($this->once())->method('create')->willReturn($this->customer);
+        $this->customerFactory->expects($this->once())
+            ->method('create')
+            ->with($this->command->name)
+            ->willReturn($this->customer);
+
         $this->commandHandler->execute($this->command);
     }
 
-    public function testExecuteWhenCalledMustAddCustomer(): void
+    public function testExecute__MustAddAddCustomer(): void
     {
         $this->customerFactory->method('create')->willReturn($this->customer);
         $this->customerRepository->expects($this->once())->method('add')->with($this->customer);
+
         $this->commandHandler->execute($this->command);
     }
 
-    public function testExecuteWhenCalledMustDispatchEvent(): void
+    public function testExecute__MustDispatchEvent(): void
     {
         $this->customerFactory->method('create')->willReturn($this->customer);
-        $this->dispatcher->expects($this->once())->method('dispatch');
+        $this->dispatcher->expects($this->once())
+            ->method('dispatch')
+            ->with($this->isInstanceOf(StoredCustomer::class));
+
         $this->commandHandler->execute($this->command);
     }
 }
